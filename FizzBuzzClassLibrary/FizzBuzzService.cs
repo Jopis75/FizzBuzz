@@ -16,7 +16,7 @@ namespace FizzBuzzClassLibrary
 
         public Int32 N => _n;
 
-        public void GetInput(Int32 maxValue)
+        public void ReadInput(Int32 maxValue)
         {
             if (!(maxValue > 1) || !(maxValue <= 100))
             {
@@ -26,6 +26,11 @@ namespace FizzBuzzClassLibrary
             string input = Console.ReadLine()!;
 
             string[] inputs = input.Split(' ');
+
+            if (inputs.Length != 3)
+            {
+                throw new ArgumentException("Please enter exactly three integers separated by spaces.");
+            }
 
             if (Int32.TryParse(inputs[0], out _x) == false)
             {
@@ -55,6 +60,29 @@ namespace FizzBuzzClassLibrary
             if (!(_n <= maxValue))
             {
                 throw new ArgumentException($"N ({_n}) must be less than or equal to the maximum value ({maxValue}).");
+            }
+        }
+
+        public void WriteFizzBuzz()
+        {
+            for (int i = 1; i <= _n; i++)
+            {
+                if (i % _x == 0 && i % _y == 0)
+                {
+                    Console.WriteLine("FizzBuzz");
+                }
+                else if (i % _x == 0)
+                {
+                    Console.WriteLine("Fizz");
+                }
+                else if (i % _y == 0)
+                {
+                    Console.WriteLine("Buzz");
+                }
+                else
+                {
+                    Console.WriteLine(i);
+                }
             }
         }
     }

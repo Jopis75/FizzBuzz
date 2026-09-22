@@ -1,11 +1,56 @@
-﻿//Console.WriteLine("Hello, World!");
-
-using FizzBuzzClassLibrary;
+﻿using FizzBuzzClassLibrary;
+using System.Runtime.CompilerServices;
 
 var fizzBuzzService = new FizzBuzzService();
 
-fizzBuzzService.GetInput(100);
+while (true)
+{
+    try
+    {
+        Console.WriteLine();
 
-Console.WriteLine($"X: {fizzBuzzService.X}, Y: {fizzBuzzService.Y}, N: {fizzBuzzService.N}");
+        Console.Write("Enter three integers (X, Y, N) separated by spaces (1 <= X < Y <= N <= 100): ");
 
-Console.ReadLine();
+        fizzBuzzService.ReadInput(100);
+
+        Console.WriteLine();
+
+        fizzBuzzService.WriteFizzBuzz();
+
+        Console.WriteLine();
+    }
+    catch (ArgumentException ex)
+    {
+        Console.WriteLine(ex.Message);
+        continue;
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"An unexpected error occurred: {ex.Message}");
+        break;
+    }
+
+    if (!Continue())
+    {
+        break;
+    }
+}
+
+bool Continue()
+{
+    while (true)
+    {
+        Console.Write("Do you want to continue? (Y/N): ");
+
+        string? input = Console.ReadLine();
+
+        if (input != null && input.Equals("Y", StringComparison.OrdinalIgnoreCase))
+        {
+            return true;
+        }
+        else if (input != null && input.Equals("N", StringComparison.OrdinalIgnoreCase))
+        {
+            return false;
+        }
+    }
+}

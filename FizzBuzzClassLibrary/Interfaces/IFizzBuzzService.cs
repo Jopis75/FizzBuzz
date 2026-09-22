@@ -2,5 +2,8 @@
 {
     public interface IFizzBuzzService
     {
-        void GetInput(Int32 maxValue);    }
+        void ReadInput(Int32 maxValue);
+
+        void WriteFizzBuzz();
+    }
 }
