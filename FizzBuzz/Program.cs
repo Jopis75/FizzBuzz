@@ -1,5 +1,4 @@
 ﻿using FizzBuzzClassLibrary;
-using System.Runtime.CompilerServices;
 
 var fizzBuzzService = new FizzBuzzService();
 
@@ -9,7 +8,7 @@ while (true)
     {
         Console.WriteLine();
 
-        Console.Write("Enter three integers (X, Y, N) separated by spaces (1 <= X < Y <= N <= 100): ");
+        Console.Write("Enter three integers X Y N separated by spaces where 1 <= X < Y <= N <= 100: ");
 
         fizzBuzzService.ReadInput(100);
 
@@ -36,7 +35,7 @@ while (true)
     }
 }
 
-bool Continue()
+static bool Continue()
 {
     while (true)
     {

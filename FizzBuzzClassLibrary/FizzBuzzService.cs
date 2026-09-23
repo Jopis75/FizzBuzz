@@ -29,7 +29,7 @@ namespace FizzBuzzClassLibrary
 
             if (inputs.Length != 3)
             {
-                throw new ArgumentException("Please enter exactly three integers separated by spaces.");
+                throw new ArgumentException("Invalid input. Please enter three integers X Y N separated by spaces.");
             }
 
             if (Int32.TryParse(inputs[0], out _x) == false)
